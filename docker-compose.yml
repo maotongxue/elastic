@@ -1,0 +1,53 @@
+version: '2'
+services: 
+  logstash:
+    build: 
+        context: ./
+        dockerfile: ./logstash/Dockerfile
+    image: logstash:5.2.1
+    container_name: logstash
+    links:
+        - "elasticsearch"
+    volumes:
+        - ./logstash/config:/usr/logstash/config
+        - ./logstash/log/:/var/log/logstash/
+    restart: always
+
+  elasticsearch:
+    build: 
+        context: ./
+        dockerfile: ./elasticsearch/Dockerfile
+    image: elasticsearch:5.2.1
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+    volumes:
+        - ./elasticsearch/esdata/node-0:/usr/elasticsearch/data
+        - ./elasticsearch/elasticsearch.yml:/usr/elasticsearch/config/elasticsearch.yml
+        - ./elasticsearch/jvm.options:/usr/elasticsearch/config/jvm.options
+    ulimits:
+        memlock:
+            soft: -1
+            hard: -1
+        nofile:
+            soft: 65536
+            hard: 65536
+    restart: always
+  
+  kibana:
+    build:
+        context: ./
+        dockerfile: ./kibana/Dockerfile 
+    image: kibana:5.2.1
+    container_name: kibana
+    links:
+        - "elasticsearch"
+    depends_on:
+      - elasticsearch
+    ports:
+      - "5601:5601"
+    volumes:
+        - ./kibana/kibana.yml:/usr/kibana/config/kibana.yml
+    restart: always
+
