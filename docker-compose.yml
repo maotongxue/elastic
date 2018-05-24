@@ -4,7 +4,7 @@ services:
     build: 
         context: ./
         dockerfile: ./logstash/Dockerfile
-    image: logstash:5.2.1
+    image: logstash:6.2.1
     container_name: logstash
     links:
         - "elasticsearch"
@@ -17,7 +17,7 @@ services:
     build: 
         context: ./
         dockerfile: ./elasticsearch/Dockerfile
-    image: elasticsearch:5.2.1
+    image: elasticsearch:6.2.1
     container_name: elasticsearch
     ports:
       - "9200:9200"
@@ -39,7 +39,7 @@ services:
     build:
         context: ./
         dockerfile: ./kibana/Dockerfile 
-    image: kibana:5.2.1
+    image: kibana:6.2.1
     container_name: kibana
     links:
         - "elasticsearch"
