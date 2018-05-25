@@ -1,0 +1,6 @@
+.DS_Store
+elasticsearch/esdata/*
+logstash/logs/*
+
+!/elasticsearch/esdata/.keep
+!/logstash/logs/.keep

@@ -61,7 +61,7 @@
 #
 # Where to fetch the pipeline configuration for the main pipeline
 #
-path.config: /usr/logstash/config/conf.d
+path.config: /usr/logstash/pipeline
 #
 # Pipeline configuration string for the main pipeline
 #
@@ -135,7 +135,7 @@ path.config: /usr/logstash/config/conf.d
 #
 # Bind address for the metrics REST endpoint
 #
-# http.host: "127.0.0.1"
+http.host: 0.0.0.0
 #
 # Bind port for the metrics REST endpoint, this option also accept a range
 # (9600-9700) and logstash will pick up the first available ports.
@@ -153,7 +153,7 @@ path.config: /usr/logstash/config/conf.d
 #   * trace
 #
 # log.level: info
-path.logs: /var/log/logstash/
+path.logs: /usr/logstash/logs
 #
 # ------------ Other Settings --------------
 #

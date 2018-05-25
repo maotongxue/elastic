@@ -1,6 +1,7 @@
-FROM alpine:latest
+FROM alpine:3.7
+
 RUN apk add --no-cache openjdk8 wget bash \
-    && wget https://artifacts.elastic.co/downloads/logstash/logstash-6.2.1.tar.gz \
+    && wget https://artifacts.elastic.co/downloads/logstash/logstash-6.0.1.tar.gz \
     && tar -xf  logstash-*.tar.gz -C /usr/ \
     && rm -rf /logstash-*.tar.gz \
     && mv /usr/logstash-* /usr/logstash \
@@ -8,7 +9,7 @@ RUN apk add --no-cache openjdk8 wget bash \
     && chown -R logstash /usr/logstash \
     && apk del wget \
     && rm -rf /var/cache/apk/*    
-ENV PATH /usr/logstash/bin:$PATH
 
 USER logstash
-CMD ["/usr/logstash/bin/logstash","-f /usr/logstash/config/logstash.yml"]
+WORKDIR /usr/logstash
+CMD ["./bin/logstash"]

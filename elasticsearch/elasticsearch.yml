@@ -30,11 +30,11 @@ node.name: node-1
 #
 # Path to directory where to store the data (separate multiple locations by comma):
 #
-path.data: /opt/elasticsearch/data
+path.data: /usr/elasticsearch/data
 #
 # Path to log files:
 #
-path.logs: /opt/elasticsearch/data
+path.logs: /usr/elasticsearch/data
 #
 # ----------------------------------- Memory -----------------------------------
 #
