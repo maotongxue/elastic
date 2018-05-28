@@ -6,7 +6,7 @@ RUN apk add --no-cache openjdk8 wget bash \
     && rm -rf /elasticsearch-*.tar.gz \
     && mv /usr/elasticsearch-* /usr/elasticsearch \
     && mkdir /usr/elasticsearch/data \
-    && mkdir /opt/elasticsearch/tmp \
+    && mkdir /usr/elasticsearch/tmp \
     && adduser -D -u 1000 -h /usr/elasticsearch elasticsearch \
     && chown -R elasticsearch /usr/elasticsearch \
     && apk del wget \
