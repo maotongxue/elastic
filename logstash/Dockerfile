@@ -1,7 +1,7 @@
 FROM alpine:3.7
 
 RUN apk add --no-cache openjdk8 wget bash \
-    && wget https://artifacts.elastic.co/downloads/logstash/logstash-6.0.1.tar.gz \
+    && wget https://artifacts.elastic.co/downloads/logstash/logstash-6.2.4.tar.gz \
     && tar -xf  logstash-*.tar.gz -C /usr/ \
     && rm -rf /logstash-*.tar.gz \
     && mv /usr/logstash-* /usr/logstash \
