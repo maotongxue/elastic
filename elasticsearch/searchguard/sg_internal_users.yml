@@ -1,0 +1,5 @@
+# This is the internal user database
+# The hash value is a bcrypt hash and can be generated with plugin/tools/hash.sh
+admin:
+  hash: $2a$12$FzVgyarbvEQcx8Nsdd7MFeHL7cmAPelSKofbmZkh7bQF/ssNz.STi
+  #password is: 123456
