@@ -20,7 +20,7 @@ cluster.name: elasticsearch
 #
 # Use a descriptive name for the node:
 #
-node.name: node-2
+node.name: node-0
 #
 # Add custom attributes to the node:
 #
@@ -99,4 +99,6 @@ searchguard.ssl.transport.keystore_password: maotongxue
 searchguard.ssl.transport.truststore_filepath: truststore.jks
 searchguard.ssl.transport.truststore_password: maotongxue
 searchguard.ssl.transport.enforce_hostname_verification: false
-searchguard.ssl.transport.keystore_filepath: node-0-keystore.jks
+searchguard.ssl.transport.keystore_filepath: kirk-keystore.jks
+searchguard.authcz.admin_dn: 
+ - CN=kirk,OU=client,O=client,L=test,C=DE

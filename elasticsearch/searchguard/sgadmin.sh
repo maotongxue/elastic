@@ -6,7 +6,7 @@ cd /usr/elasticsearch/plugins/search-guard-6/tools/
 
 ./sgadmin.sh \
 -cd ../sgconfig \
--ks /usr/elasticsearch/config/node-0-keystore.jks \
+-ks /usr/elasticsearch/config/kirk-keystore.jks \
 -ts /usr/elasticsearch/config/truststore.jks \
 -icl \
 -kspass maotongxue \
