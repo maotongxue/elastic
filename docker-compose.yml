@@ -22,6 +22,7 @@ services:
     network_mode: "host"
     environment:
         HOST_PORT: 9303
+        NODE_NAME: node-0
     volumes:
         - ./elasticsearch/esdata/node-0:/usr/elasticsearch/data
         - ./elasticsearch/elasticsearch.yml:/usr/elasticsearch/config/elasticsearch.yml

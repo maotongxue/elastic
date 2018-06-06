@@ -20,7 +20,7 @@ cluster.name: elasticsearch
 #
 # Use a descriptive name for the node:
 #
-node.name: node-0
+node.name: ${NODE_NAME}
 #
 # Add custom attributes to the node:
 #
@@ -54,7 +54,7 @@ bootstrap.memory_lock: true
 #
 #network.host: 0.0.0.0
 network.bind_host: 0.0.0.0
-network.publish_host: 10.10.11.26
+network.publish_host: 172.16.1.23
 http.port: 9203
 transport.tcp.port: 9303
 # For more information, see the documentation at:
@@ -65,7 +65,7 @@ transport.tcp.port: 9303
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.zen.ping.unicast.hosts: ["10.10.11.31:9303", "10.10.11.26:9303"]
+discovery.zen.ping.unicast.hosts: ["172.16.1.23:9303", "172.16.1.23:9304"]
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
 #
@@ -99,6 +99,7 @@ searchguard.ssl.transport.keystore_password: maotongxue
 searchguard.ssl.transport.truststore_filepath: truststore.jks
 searchguard.ssl.transport.truststore_password: maotongxue
 searchguard.ssl.transport.enforce_hostname_verification: false
-searchguard.ssl.transport.keystore_filepath: kirk-keystore.jks
+searchguard.ssl.transport.keystore_filepath: ${NODE_NAME}-keystore.jks
+
 searchguard.authcz.admin_dn: 
- - CN=kirk,OU=client,O=client,L=test,C=DE
+  - CN=kirk,OU=client,O=client,L=test,C=DE
