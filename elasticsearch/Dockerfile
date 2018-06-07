@@ -1,9 +1,10 @@
 FROM alpine:3.7
 
 COPY ["./elasticsearch/searchguard/*","/"]
+COPY ["./elasticsearch/run/*","/run/"]
 ENV ES_TMPDIR /usr/elasticsearch/tmp
 
-RUN apk add --no-cache openjdk8-jre wget bash su-exec \
+RUN apk add --no-cache openjdk8-jre wget bash su-exec curl \
     && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.tar.gz \
     && tar -xf  elasticsearch-*.tar.gz -C /usr/ \
     && rm -rf /elasticsearch-*.tar.gz \
@@ -20,5 +21,8 @@ RUN apk add --no-cache openjdk8-jre wget bash su-exec \
     && rm -rf /var/cache/apk/*
 
 ENV PATH /usr/elasticsearch/bin:$PATH
+ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk/jre
+ENV PATH $PATH:/usr/lib/jvm/java-1.8-openjdk/jre/bin:/usr/lib/jvm/java-1.8-openjdk/bin
+
+ENTRYPOINT ["/run/docker-entrypoint.sh"]
 CMD ["elasticsearch"]
-ENTRYPOINT ["/docker-entrypoint.sh"]

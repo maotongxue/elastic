@@ -12,6 +12,6 @@ cd /usr/elasticsearch/plugins/search-guard-6/tools/
 -kspass maotongxue \
 -tspass maotongxue \
 -nhnv \
--p $HOST_PORT 
+-p $TRANSPORT_TCP_PORT
 
 exit

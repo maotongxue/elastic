@@ -55,8 +55,8 @@ bootstrap.memory_lock: true
 #network.host: 0.0.0.0
 network.bind_host: 0.0.0.0
 network.publish_host: 172.16.1.23
-http.port: 9203
-transport.tcp.port: 9303
+http.port: ${HTTP_PORT}
+transport.tcp.port: ${TRANSPORT_TCP_PORT}
 # For more information, see the documentation at:
 # <https://www.elastic.co/guide/en/elasticsearch/reference/5.0/modules-network.html>
 #
