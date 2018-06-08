@@ -1,0 +1,19 @@
+#!/bin/bash
+
+set -e
+
+# Add elasticsearch as command if needed
+if [ "${1:0:1}" = '-' ]; then
+	set -- elasticsearch "$@"
+fi
+
+# Drop root privileges if we are running elasticsearch
+# allow the container to be started with `--user`
+if [ "$1" = 'elasticsearch' -a "$(id -u)" = '0' ]; then
+	# Change the ownership of user-mutable directories to elasticsearch
+	chown -R elasticsearch:elasticsearch /usr/elasticsearch/data
+
+	set -- gosu elasticsearch "$@"
+fi
+
+exec "$@"

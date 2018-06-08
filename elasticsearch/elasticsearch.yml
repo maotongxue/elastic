@@ -93,3 +93,6 @@ node.data: true
 http.cors.enabled: true
 http.cors.allow-origin: "*"
 http.cors.allow-headers: "Authorization"
+
+xpack.security.audit.enabled: true
+xpack.license.self_generated.type: trial
