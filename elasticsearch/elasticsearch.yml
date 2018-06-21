@@ -14,7 +14,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: elasticsearch
+cluster.name: elasticsearch-xpack
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -94,5 +94,7 @@ http.cors.enabled: true
 http.cors.allow-origin: "*"
 http.cors.allow-headers: "Authorization"
 
+xpack.security.enabled: true
+xpack.security.authc.accept_default_password: true
 xpack.security.audit.enabled: true
 xpack.license.self_generated.type: trial
