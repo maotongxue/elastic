@@ -1,7 +1,7 @@
 FROM alpine:3.7
 
 RUN apk add --no-cache openjdk8 wget bash \
-    && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-6.2.4.tar.gz \
+    && wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-oss-6.3.0.tar.gz \
     && tar -xf  elasticsearch-*.tar.gz -C /usr/ \
     && rm -rf /elasticsearch-*.tar.gz \
     && mv /usr/elasticsearch-* /usr/elasticsearch \

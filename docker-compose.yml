@@ -4,13 +4,14 @@ services:
     build: 
         context: ./
         dockerfile: ./logstash/Dockerfile
-    image: logstash:6.2.4
+    image: logstash:6.3.0
     container_name: logstash
     links:
         - "elasticsearch"
     volumes:
+        - /etc/localtime:/etc/localtime:ro
         - ./logstash/pipeline:/usr/logstash/pipeline
-        - ./logstash/logstash.yml:/usr/logstash/config/logstash.yml
+        - ./logstash/config:/usr/logstash/config
         - ./logstash/logs:/usr/logstash/logs
     restart: always
 
@@ -18,12 +19,13 @@ services:
     build: 
         context: ./
         dockerfile: ./elasticsearch/Dockerfile
-    image: elasticsearch:6.2.4
+    image: elasticsearch:6.3.0
     container_name: elasticsearch
     ports:
       - "9200:9200"
       - "9300:9300"
     volumes:
+        - /etc/localtime:/etc/localtime:ro
         - ./elasticsearch/esdata/node-0:/usr/elasticsearch/data
         - ./elasticsearch/elasticsearch.yml:/usr/elasticsearch/config/elasticsearch.yml
         - ./elasticsearch/jvm.options:/usr/elasticsearch/config/jvm.options
@@ -40,7 +42,7 @@ services:
     build:
         context: ./
         dockerfile: ./kibana/Dockerfile 
-    image: kibana:6.2.4
+    image: kibana:6.3.0
     container_name: kibana
     links:
         - "elasticsearch"
@@ -49,6 +51,6 @@ services:
     ports:
       - "5601:5601"
     volumes:
+        - /etc/localtime:/etc/localtime:ro
         - ./kibana/kibana.yml:/usr/kibana/config/kibana.yml
     restart: always
-
